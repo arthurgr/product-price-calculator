@@ -5,6 +5,7 @@ export default function Summary({
 }: {
   formState: FormItemsInterface;
 }) {
+  const tax = (formState.ingredient1 + formState.ingredient2) / 10;
   return (
     <>
       <p>Ingredient 1: {formState.ingredient1}</p>
@@ -16,10 +17,7 @@ export default function Summary({
       <p>Tax: {formState.tax}%</p>
 
       <br />
-      <p>
-        Grand Total:{" "}
-        {formState.ingredient2 + (formState.ingredient1 * formState.tax) / 100}
-      </p>
+      <p>Grand Totals: {formState.ingredient1 + formState.ingredient2 + tax}</p>
     </>
   );
 }
