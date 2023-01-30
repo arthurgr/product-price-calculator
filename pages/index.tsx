@@ -1,16 +1,20 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import FormItems from "../components/FormItems";
-import Summary from "../components/Summary";
+import IngredientList from "../components/IngredientList/IngredientList";
 import { useReducer } from "react";
-import formReducer from "../reducers/formReducer";
+import ingredientListReducer from "../components/IngredientList/reducers/ingredientListReducer";
 
 export default function Home() {
-  const [formState, formDispatch] = useReducer(formReducer, {
-    ingredient1: 0,
-    ingredient2: 0,
-    tax: 0,
-  });
+  const [ingredientListState, ingredientListDispatch] = useReducer(
+    ingredientListReducer,
+    [
+      {
+        measurementType: "oz",
+        purchaseSize: 0,
+        averageCost: 0,
+      },
+    ]
+  );
   return (
     <div className={styles.container}>
       <Head>
@@ -22,12 +26,7 @@ export default function Home() {
       <main>
         <h1 className="mb-6 text-lg">Product Price Caluculator</h1>
         <section className="grid grid-cols-4 gap-4">
-          <section className="">
-            <FormItems formState={formState} formDispatch={formDispatch} />
-          </section>
-          <section className="">
-            <Summary formState={formState} />
-          </section>
+          <IngredientList />
         </section>
       </main>
     </div>
