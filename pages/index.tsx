@@ -9,9 +9,11 @@ export default function Home() {
     ingredientListReducer,
     [
       {
+        id: 0,
         measurementType: "oz",
         purchaseSize: 0,
         averageCost: 0,
+        costPerOunce: 0,
       },
     ]
   );
@@ -25,7 +27,7 @@ export default function Home() {
 
       <main>
         <h1 className="mb-6 text-lg">Product Price Caluculator</h1>
-        <section className="grid grid-cols-4 gap-4">
+        <section>
           <IngredientList />
         </section>
       </main>
