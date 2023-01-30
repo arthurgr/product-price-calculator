@@ -32,7 +32,11 @@ function Table({ columns, data }) {
           return (
             <tr key={row.id} {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                return (
+                  <td key={cell.id} {...cell.getCellProps()}>
+                    {cell.render("Cell")}
+                  </td>
+                );
               })}
             </tr>
           );
