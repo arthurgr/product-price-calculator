@@ -10,6 +10,7 @@ export default function Home() {
     [
       {
         id: 0,
+        ingredient: "",
         measurementType: "oz",
         purchaseSize: 0,
         averageCost: 0,
