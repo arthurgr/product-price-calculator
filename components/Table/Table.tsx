@@ -15,11 +15,8 @@ export default function Table({
     });
 
   return (
-    <table
-      {...getTableProps()}
-      className="w-full text-sm text-left text-gray-500 dark:text-gray-400"
-    >
-      <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table {...getTableProps()}>
+      <thead>
         {headerGroups.map((headerGroup) => {
           return (
             <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
@@ -41,11 +38,7 @@ export default function Table({
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <tr
-              {...row.getRowProps()}
-              key={row.id}
-              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-            >
+            <tr {...row.getRowProps()} key={row.id}>
               {row.cells.map((cell) => {
                 return (
                   <td

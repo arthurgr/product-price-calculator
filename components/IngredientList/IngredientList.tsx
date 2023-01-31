@@ -59,5 +59,12 @@ export default function IngredientList() {
     ],
     []
   );
-  return <Table columns={columns} data={data} />;
+  return (
+    <>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Add Ingredient
+      </button>
+      <Table columns={columns} data={data} />
+    </>
+  );
 }
