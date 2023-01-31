@@ -45,7 +45,10 @@ export default function IngredientList() {
     []
   );
 
-  const data = useMemo<Array<Ingredient>>(() => ingredientListState, []);
+  const data = useMemo<Array<Ingredient>>(
+    () => ingredientListState,
+    [ingredientListState]
+  );
   return (
     <>
       <button

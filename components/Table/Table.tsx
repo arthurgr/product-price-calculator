@@ -19,11 +19,12 @@ export default function Table({
       <thead>
         {headerGroups.map((headerGroup) => {
           return (
-            <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
+            // eslint-disable-next-line react/jsx-key
+            <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
+                // eslint-disable-next-line react/jsx-key
                 <th
                   {...column.getHeaderProps()}
-                  key={column.id}
                   scope="col"
                   className="px-6 py-3"
                 >
@@ -38,18 +39,16 @@ export default function Table({
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()} key={row.id}>
-              {/* {row.cells.map((cell) => {
+            // eslint-disable-next-line react/jsx-key
+            <tr {...row.getRowProps()}>
+              {row.cells.map((cell) => {
                 return (
-                  <td
-                    {...cell.getCellProps()}
-                    key={cell.row.id}
-                    className="px-6 py-4"
-                  >
+                  // eslint-disable-next-line react/jsx-key
+                  <td {...cell.getCellProps()} className="px-6 py-4">
                     {cell.render("Cell")}
                   </td>
                 );
-              })} */}
+              })}
             </tr>
           );
         })}
