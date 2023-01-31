@@ -1,23 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import IngredientList from "../components/IngredientList/IngredientList";
-import { useReducer } from "react";
-import ingredientListReducer from "../components/IngredientList/reducers/ingredientListReducer";
 
 export default function Home() {
-  const [ingredientListState, ingredientListDispatch] = useReducer(
-    ingredientListReducer,
-    [
-      {
-        id: 0,
-        ingredient: "",
-        measurementType: "oz",
-        purchaseSize: 0,
-        averageCost: 0,
-        costPerOunce: 0,
-      },
-    ]
-  );
   return (
     <div className={styles.container}>
       <Head>

@@ -1,9 +1,24 @@
-import { useMemo } from "react";
+import { useMemo, useReducer } from "react";
 import { Column } from "react-table";
 import { Ingredient } from "./interfaces/Ingredient";
+import ingredientListReducer from "./reducers/ingredientListReducer";
 import Table from "../Table/Table";
 
 export default function IngredientList() {
+  const [ingredientListState, ingredientListDispatch] = useReducer(
+    ingredientListReducer,
+    [
+      {
+        id: 0,
+        ingredient: "",
+        measurementType: "oz",
+        purchaseSize: 0,
+        averageCost: 0,
+        costPerOunce: 0,
+      },
+    ]
+  );
+
   const columns = useMemo<Column<Ingredient>[]>(
     () => [
       {
