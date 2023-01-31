@@ -39,7 +39,7 @@ export default function Table({
           prepareRow(row);
           return (
             <tr {...row.getRowProps()} key={row.id}>
-              {row.cells.map((cell) => {
+              {/* {row.cells.map((cell) => {
                 return (
                   <td
                     {...cell.getCellProps()}
@@ -49,7 +49,7 @@ export default function Table({
                     {cell.render("Cell")}
                   </td>
                 );
-              })}
+              })} */}
             </tr>
           );
         })}

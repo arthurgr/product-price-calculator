@@ -1,6 +1,8 @@
+import { Ingredient } from "./Ingredient";
+
 export type IngredientListActions =
   | {
       type: "ADD_INGREDIENT";
-      ingredient1: number;
+      ingredient: Ingredient;
     }
   | { type: "TAX"; tax: number };

@@ -7,7 +7,7 @@ export default function ingredientListReducer(
 ) {
   switch (action.type) {
     case "ADD_INGREDIENT":
-      return [...state];
+      return [...state, { ...action.ingredient }];
     default:
       throw new Error();
   }
