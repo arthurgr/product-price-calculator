@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -10,11 +6,11 @@ table {
 
 td,
 th {
-  border: 1px solid #dbdbdb;
+  border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
 tr:nth-child(even) {
-  background-color: #f1f1f1;
+  background-color: #dddddd;
 }

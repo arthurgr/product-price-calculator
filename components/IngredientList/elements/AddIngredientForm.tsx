@@ -8,14 +8,6 @@ export default function AddIngredientForm() {
 
   const { ingredientDispatch, ingredientState } = useIngredientContext();
 
-  useEffect(() => {
-    console.log(ingredientListState);
-  }, [ingredientListState]);
-
-  useEffect(() => {
-    console.log(ingredientState);
-  }, [ingredientState]);
-
   return (
     <>
       <form className="grid grid-cols-1 grid-cols-8 gap-4">
@@ -105,7 +97,7 @@ export default function AddIngredientForm() {
             },
           });
         }}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
       >
         Add Ingredient
       </button>

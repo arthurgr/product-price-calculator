@@ -8,7 +8,7 @@ export interface IngredientProps {
   ingredientDispatch: React.Dispatch<IngredientActions>;
 }
 
-const ingredientContext = createContext<IngredientProps>({
+const IngredientContext = createContext<IngredientProps>({
   ingredientState: {
     id: 0,
     ingredient: "string",
@@ -25,20 +25,22 @@ export const IngredientProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [dark, setDark] = useState(false);
-
-  const [ingredientState, ingredientDispatch] = useReducer(
-    ingredientReducer,
-    {}
-  );
+  const [ingredientState, ingredientDispatch] = useReducer(ingredientReducer, {
+    id: 0,
+    ingredient: "",
+    measurementType: "oz",
+    purchaseSize: 0,
+    averageCost: 0,
+    costPerOunce: 0,
+  });
 
   return (
-    <ingredientContext.Provider value={{ ingredientState, ingredientDispatch }}>
+    <IngredientContext.Provider value={{ ingredientState, ingredientDispatch }}>
       {children}
-    </ingredientContext.Provider>
+    </IngredientContext.Provider>
   );
 };
 
 export default function useIngredientContext() {
-  return useContext(ingredientContext);
+  return useContext(IngredientContext);
 }
