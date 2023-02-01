@@ -1,11 +1,13 @@
-import { useMemo, useReducer } from "react";
-import ingredientListReducer from "../reducers/ingredientListReducer";
+import { useEffect } from "react";
+import useCtxDark from "../context/IngredientListContext";
 
 export default function AddIngredientForm() {
-  const [ingredientListState, ingredientListDispatch] = useReducer(
-    ingredientListReducer,
-    []
-  );
+  const { ingredientListState, ingredientListDispatch } = useCtxDark();
+
+  useEffect(() => {
+    console.log(ingredientListState);
+  }, [ingredientListState]);
+
   return (
     <>
       <form className="grid grid-cols-1 grid-cols-8 gap-4">

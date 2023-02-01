@@ -1,16 +1,11 @@
-import { useMemo, useReducer } from "react";
+import { useMemo } from "react";
 import { Column } from "react-table";
 import { Ingredient } from "./interfaces/Ingredient";
-import ingredientListReducer from "./reducers/ingredientListReducer";
 import Table from "../Table/Table";
 import AddIngredientForm from "./elements/AddIngredientForm";
+import { IngredientListProvider } from "./context/IngredientListContext";
 
 export default function IngredientList() {
-  const [ingredientListState, ingredientListDispatch] = useReducer(
-    ingredientListReducer,
-    []
-  );
-
   const columns = useMemo<Column<Ingredient>[]>(
     () => [
       {
@@ -37,14 +32,10 @@ export default function IngredientList() {
     []
   );
 
-  const data = useMemo<Array<Ingredient>>(
-    () => ingredientListState,
-    [ingredientListState]
-  );
   return (
-    <>
+    <IngredientListProvider>
       <AddIngredientForm />
-      <Table columns={columns} data={data} />
-    </>
+      <Table columns={columns} data={[]} />
+    </IngredientListProvider>
   );
 }
