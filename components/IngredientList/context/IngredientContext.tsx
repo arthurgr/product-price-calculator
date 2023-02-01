@@ -4,12 +4,19 @@ import ingredientReducer from "../reducers/ingredientReducer";
 import { IngredientActions } from "../interfaces/ingredientActions";
 
 export interface IngredientProps {
-  ingredientState: Ingredient | {};
+  ingredientState: Ingredient;
   ingredientDispatch: React.Dispatch<IngredientActions>;
 }
 
 const ingredientContext = createContext<IngredientProps>({
-  ingredientState: {},
+  ingredientState: {
+    id: 0,
+    ingredient: "string",
+    measurementType: "oz",
+    purchaseSize: 3,
+    averageCost: 3,
+    costPerOunce: 3,
+  },
   ingredientDispatch: () => {},
 });
 

@@ -1,13 +1,20 @@
 import { useEffect } from "react";
 import useIngredientListContext from "../context/IngredientListContext";
+import useIngredientContext from "../context/IngredientContext";
 
 export default function AddIngredientForm() {
   const { ingredientListState, ingredientListDispatch } =
     useIngredientListContext();
 
+  const { ingredientDispatch, ingredientState } = useIngredientContext();
+
   useEffect(() => {
     console.log(ingredientListState);
   }, [ingredientListState]);
+
+  useEffect(() => {
+    console.log(ingredientState);
+  }, [ingredientState]);
 
   return (
     <>
@@ -23,6 +30,12 @@ export default function AddIngredientForm() {
             type="text"
             id="email"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            onChange={(event) => {
+              ingredientDispatch({
+                type: "INGREDIENT",
+                ingredient: event.target.value,
+              });
+            }}
             required
           />
         </div>
@@ -52,6 +65,12 @@ export default function AddIngredientForm() {
             type="text"
             id="purchaseSize"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            onChange={(event) => {
+              ingredientDispatch({
+                type: "PURCHASE_SIZE",
+                purchaseSize: parseInt(event.target.value),
+              });
+            }}
             required
           />
         </div>
@@ -66,6 +85,12 @@ export default function AddIngredientForm() {
             type="text"
             id="averageCost"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            onChange={(event) => {
+              ingredientDispatch({
+                type: "AVERAGE_COST",
+                averageCost: parseInt(event.target.value),
+              });
+            }}
             required
           />
         </div>
@@ -75,12 +100,8 @@ export default function AddIngredientForm() {
           ingredientListDispatch({
             type: "ADD_INGREDIENT",
             ingredient: {
-              id: Math.random(),
-              ingredient: "pepper",
+              ...ingredientState,
               measurementType: "oz",
-              purchaseSize: 30,
-              averageCost: 31,
-              costPerOunce: 32,
             },
           });
         }}

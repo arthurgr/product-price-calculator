@@ -5,24 +5,24 @@ export default function Table() {
     <table>
       <thead>
         <tr>
-          <th>Ingredient</th>
-          <th>Measurement Type</th>
-          <th>Purchase Size</th>
-          <th>Average Cost</th>
-          <th>Cost Per Ounce</th>
-          <th>Delete</th>
+          <th className="p-4">Ingredient</th>
+          <th className="p-4">Measurement Type</th>
+          <th className="p-4">Purchase Size</th>
+          <th className="p-4">Average Cost</th>
+          <th className="p-4">Cost Per Ounce</th>
+          <th className="p-4">Delete</th>
         </tr>
       </thead>
       <tbody>
         {ingredientListState.map((ingredient) => {
           return (
             <tr key={ingredient.ingredient}>
-              <td>{ingredient.ingredient}</td>
-              <td>{ingredient.measurementType}</td>
-              <td>{ingredient.purchaseSize}</td>
-              <td>{ingredient.averageCost}</td>
-              <td>cost per ounce</td>
-              <td>
+              <td className="p-4">{ingredient.ingredient}</td>
+              <td className="p-4">{ingredient.measurementType}</td>
+              <td className="p-4">{ingredient.purchaseSize}</td>
+              <td className="p-4">{ingredient.averageCost}</td>
+              <td className="p-4">cost per ounce</td>
+              <td className="p-4">
                 <button>delete</button>
               </td>
             </tr>
