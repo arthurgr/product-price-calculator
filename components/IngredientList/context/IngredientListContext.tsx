@@ -32,6 +32,6 @@ export const IngredientListProvider = ({
   );
 };
 
-export default function useCtxDark() {
+export default function useIngredientListContext() {
   return useContext(IngredientListContext);
 }

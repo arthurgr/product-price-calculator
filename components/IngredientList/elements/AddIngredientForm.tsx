@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import useCtxDark from "../context/IngredientListContext";
+import useIngredientListContext from "../context/IngredientListContext";
 
 export default function AddIngredientForm() {
-  const { ingredientListState, ingredientListDispatch } = useCtxDark();
+  const { ingredientListState, ingredientListDispatch } =
+    useIngredientListContext();
 
   useEffect(() => {
     console.log(ingredientListState);
