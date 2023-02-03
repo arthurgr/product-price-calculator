@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import useIngredientListContext from "../context/IngredientListContext";
 import useIngredientContext from "../context/IngredientContext";
+import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
 
 export default function AddIngredientForm() {
   const { ingredientListState, ingredientListDispatch } =
@@ -16,7 +16,7 @@ export default function AddIngredientForm() {
             htmlFor="ingredient"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Ingredient
+            {INGREDIENT_LIST_CONST.INGREDIENT}
           </label>
           <input
             type="text"
@@ -36,7 +36,7 @@ export default function AddIngredientForm() {
             htmlFor="measurementType"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Measurement Type
+            {INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}
           </label>
           <input
             type="text"
@@ -51,7 +51,7 @@ export default function AddIngredientForm() {
             htmlFor="purchaseSize"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Purchase Size
+            {INGREDIENT_LIST_CONST.PURCHASE_SIZE}
           </label>
           <input
             type="text"
@@ -71,7 +71,7 @@ export default function AddIngredientForm() {
             htmlFor="averageCost"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Average Cost
+            {INGREDIENT_LIST_CONST.AVERAGE_COST}
           </label>
           <input
             type="text"
@@ -99,7 +99,7 @@ export default function AddIngredientForm() {
         }}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
       >
-        Add Ingredient
+        {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
       </button>
     </>
   );

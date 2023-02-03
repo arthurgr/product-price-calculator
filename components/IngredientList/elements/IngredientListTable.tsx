@@ -5,6 +5,7 @@ import Tr from "@common/Table/elements/Tr";
 import Td from "@common/Table/elements/Td";
 import Tbody from "@common/Table/elements/Tbody";
 import useIngredientListContext from "../context/IngredientListContext";
+import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
 
 export default function IngredientListTable() {
   const { ingredientListState } = useIngredientListContext();
@@ -12,12 +13,12 @@ export default function IngredientListTable() {
     <Table>
       <Thead>
         <Tr>
-          <Th>Ingredient</Th>
-          <Th>Measurement Type</Th>
-          <Th>Purchase Size</Th>
-          <Th>Average Cost</Th>
-          <Th>Cost Per Ounce</Th>
-          <Th>Delete</Th>
+          <Th>{INGREDIENT_LIST_CONST.INGREDIENT}</Th>
+          <Th>{INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}</Th>
+          <Th>{INGREDIENT_LIST_CONST.PURCHASE_SIZE}</Th>
+          <Th>{INGREDIENT_LIST_CONST.AVERAGE_COST}</Th>
+          <Th>{INGREDIENT_LIST_CONST.COST_PER_OUNCE}</Th>
+          <Th>{INGREDIENT_LIST_CONST.DELETE}</Th>
         </Tr>
       </Thead>
       <Tbody>
