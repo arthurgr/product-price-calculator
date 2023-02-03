@@ -1,4 +1,4 @@
-import Table from "../Table/Table";
+import IngredientListTable from "./elements/IngredientListTable";
 import AddIngredientForm from "./elements/AddIngredientForm";
 import { IngredientListProvider } from "./context/IngredientListContext";
 import { IngredientProvider } from "./context/IngredientContext";
@@ -8,7 +8,7 @@ export default function IngredientList() {
     <IngredientListProvider>
       <IngredientProvider>
         <AddIngredientForm />
-        <Table />
+        <IngredientListTable />
       </IngredientProvider>
     </IngredientListProvider>
   );
