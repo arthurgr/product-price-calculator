@@ -1,9 +1,9 @@
-import Table from "../../Table/Table";
-import Thead from "../../Table/elements/Thead";
-import Th from "../../Table/elements/Th";
-import Tr from "../../Table/elements/Tr";
-import Td from "../../Table/elements/Td";
-import Tbody from "../../Table/elements/Tbody";
+import Table from "@common/Table/Table";
+import Thead from "@common/Table/elements/Thead";
+import Th from "@common/Table/elements/Th";
+import Tr from "@common/Table/elements/Tr";
+import Td from "@common/Table/elements/Td";
+import Tbody from "@common/Table/elements/Tbody";
 import useIngredientListContext from "../context/IngredientListContext";
 
 export default function IngredientListTable() {
