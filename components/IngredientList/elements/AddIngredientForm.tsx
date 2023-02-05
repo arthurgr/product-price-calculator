@@ -1,4 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import Input from "@common/Forms/Inputs/Input";
 import useIngredientListContext from "../context/IngredientListContext";
 import useIngredientContext from "../context/IngredientContext";
 import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
@@ -62,46 +63,19 @@ export default function AddIngredientForm() {
       >
         {({ isSubmitting }) => (
           <Form>
-            <label htmlFor="ingredient">
-              {INGREDIENT_LIST_CONST.INGREDIENT}
-            </label>
-            <Field
-              type="text"
-              name="ingredient"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-            <ErrorMessage name="ingredient" component="div" />
-
-            <label htmlFor="measurementType">
-              {INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}
-            </label>
-            <Field
-              type="text"
+            <Input label={INGREDIENT_LIST_CONST.INGREDIENT} name="ingredient" />
+            <Input
+              label={INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}
               name="measurementType"
-              disabled
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
-            <ErrorMessage name="measurementType" component="div" />
-
-            <label htmlFor="purchaseSize">
-              {INGREDIENT_LIST_CONST.PURCHASE_SIZE}
-            </label>
-            <Field
-              type="text"
+            <Input
+              label={INGREDIENT_LIST_CONST.PURCHASE_SIZE}
               name="purchaseSize"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
-            <ErrorMessage name="purchaseSize" component="div" />
-
-            <label htmlFor="averageCost">
-              {INGREDIENT_LIST_CONST.AVERAGE_COST}
-            </label>
-            <Field
-              type="text"
+            <Input
+              label={INGREDIENT_LIST_CONST.AVERAGE_COST}
               name="averageCost"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
-            <ErrorMessage name="averageCost" component="div" />
 
             <button
               type="submit"
