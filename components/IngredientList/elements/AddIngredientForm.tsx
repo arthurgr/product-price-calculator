@@ -9,113 +9,51 @@ export default function AddIngredientForm() {
 
   const { ingredientDispatch, ingredientState } = useIngredientContext();
 
+  interface formItems {
+    ingredient?: string;
+    measurementType?: string;
+    purchaseSize?: string;
+    averageCost?: string;
+  }
+
   return (
     <>
-      <form className="grid grid-cols-1 grid-cols-8 gap-4">
-        <div className="mb-6">
-          <label
-            htmlFor="ingredient"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            {INGREDIENT_LIST_CONST.INGREDIENT}
-          </label>
-          <input
-            type="text"
-            id="email"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            onChange={(event) => {
-              ingredientDispatch({
-                type: "INGREDIENT",
-                ingredient: event.target.value,
-              });
-            }}
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            htmlFor="measurementType"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            {INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}
-          </label>
-          <input
-            type="text"
-            value="oz"
-            id="measurementType"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            disabled
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            htmlFor="purchaseSize"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            {INGREDIENT_LIST_CONST.PURCHASE_SIZE}
-          </label>
-          <input
-            type="text"
-            id="purchaseSize"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            onChange={(event) => {
-              ingredientDispatch({
-                type: "PURCHASE_SIZE",
-                purchaseSize: parseInt(event.target.value),
-              });
-            }}
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            htmlFor="averageCost"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            {INGREDIENT_LIST_CONST.AVERAGE_COST}
-          </label>
-          <input
-            type="text"
-            id="averageCost"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            onChange={(event) => {
-              ingredientDispatch({
-                type: "AVERAGE_COST",
-                averageCost: parseInt(event.target.value),
-              });
-            }}
-            required
-          />
-        </div>
-      </form>
-      <button
-        onClick={() => {
-          ingredientListDispatch({
-            type: "ADD_INGREDIENT",
-            ingredient: {
-              ...ingredientState,
-              measurementType: "oz",
-            },
-          });
-        }}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
-      >
-        {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
-      </button>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{
+          ingredient: "",
+          measurementType: "OZ",
+          purchaseSize: "",
+          averageCost: "",
+        }}
         validate={(values) => {
-          const errors: { email?: string } = {};
-          if (!values.email) {
-            errors.email = "Required";
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = "Invalid email address";
+          const errors: formItems = {};
+          if (!values.ingredient) {
+            errors.ingredient = "Required";
           }
+          if (!values.measurementType) {
+            errors.measurementType = "Required";
+          }
+          if (!values.purchaseSize) {
+            errors.purchaseSize = "Required";
+          }
+          if (!values.averageCost) {
+            errors.averageCost = "Required";
+          }
+          // else if (
+          //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+          // ) {
+          //   errors.email = "Invalid email address";
+          // }
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
+          // ingredientListDispatch({
+          //   type: "ADD_INGREDIENT",
+          //   ingredient: {
+          //     ...ingredientState,
+          //     measurementType: "oz",
+          //   },
+          // });
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -124,16 +62,53 @@ export default function AddIngredientForm() {
       >
         {({ isSubmitting }) => (
           <Form>
+            <label htmlFor="ingredient">
+              {INGREDIENT_LIST_CONST.INGREDIENT}
+            </label>
             <Field
-              type="email"
-              name="email"
+              type="text"
+              name="ingredient"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
-            <ErrorMessage name="email" component="div" />
-            <Field type="password" name="password" />
-            <ErrorMessage name="password" component="div" />
-            <button type="submit" disabled={isSubmitting}>
-              Submit
+            <ErrorMessage name="ingredient" component="div" />
+
+            <label htmlFor="measurementType">
+              {INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}
+            </label>
+            <Field
+              type="text"
+              name="measurementType"
+              disabled
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+            <ErrorMessage name="measurementType" component="div" />
+
+            <label htmlFor="purchaseSize">
+              {INGREDIENT_LIST_CONST.PURCHASE_SIZE}
+            </label>
+            <Field
+              type="text"
+              name="purchaseSize"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+            <ErrorMessage name="purchaseSize" component="div" />
+
+            <label htmlFor="averageCost">
+              {INGREDIENT_LIST_CONST.AVERAGE_COST}
+            </label>
+            <Field
+              type="text"
+              name="averageCost"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+            <ErrorMessage name="averageCost" component="div" />
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+            >
+              {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
             </button>
           </Form>
         )}
