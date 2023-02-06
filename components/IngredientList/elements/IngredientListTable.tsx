@@ -36,6 +36,7 @@ export default function IngredientListTable() {
             </Tr>
           );
         })}
+        {!ingredientListState.length && <p>No Ingredients</p>}
       </Tbody>
     </Table>
   );
