@@ -5,4 +5,4 @@ export type IngredientListActions =
       type: "ADD_INGREDIENT";
       ingredient: Ingredient;
     }
-  | { type: "TAX"; tax: number };
+  | { type: "REMOVE_INGREDIENT"; ingredientIndex: string };

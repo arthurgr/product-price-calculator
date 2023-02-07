@@ -1,14 +1,11 @@
 import { Formik, Form } from "formik";
 import Input from "@common/Forms/Inputs/Input";
 import useIngredientListContext from "../context/IngredientListContext";
-import useIngredientContext from "../context/IngredientContext";
 import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
 
 export default function AddIngredientForm() {
   const { ingredientListState, ingredientListDispatch } =
     useIngredientListContext();
-
-  const { ingredientDispatch, ingredientState } = useIngredientContext();
 
   interface formItems {
     ingredient?: string;
@@ -28,25 +25,43 @@ export default function AddIngredientForm() {
         }}
         validate={(values) => {
           const errors: formItems = {};
+
+          const ingredientCheck = ingredientListState.filter(
+            (ingredient) => ingredient.ingredient === values.ingredient
+          );
           if (!values.ingredient) {
             errors.ingredient = "Required";
+          } else if (ingredientListState.length) {
+            errors.ingredient = "Duplicate Ingredient";
           }
+
           if (!values.measurementType) {
             errors.measurementType = "Required";
           }
+
           if (!values.purchaseSize) {
             errors.purchaseSize = "Required";
           }
+
           if (!values.averageCost) {
             errors.averageCost = "Required";
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        onSubmit={(values, { setSubmitting, resetForm }) => {
+          setSubmitting(false);
+          ingredientListDispatch({
+            type: "ADD_INGREDIENT",
+            ingredient: {
+              ingredient: values.ingredient,
+              measurementType: "oz",
+              purchaseSize: parseInt(values.purchaseSize),
+              averageCost: parseInt(values.averageCost),
+              costPerOunce:
+                parseInt(values.averageCost) / parseInt(values.purchaseSize),
+            },
+          });
+          resetForm();
         }}
       >
         {({ isSubmitting }) => (
@@ -81,7 +96,7 @@ export default function AddIngredientForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+              className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mb-4"
             >
               {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
             </button>

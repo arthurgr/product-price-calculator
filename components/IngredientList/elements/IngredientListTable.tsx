@@ -8,7 +8,8 @@ import useIngredientListContext from "../context/IngredientListContext";
 import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
 
 export default function IngredientListTable() {
-  const { ingredientListState } = useIngredientListContext();
+  const { ingredientListState, ingredientListDispatch } =
+    useIngredientListContext();
   return (
     <Table>
       <Thead>
@@ -31,12 +32,16 @@ export default function IngredientListTable() {
               <Td>{ingredient.averageCost}</Td>
               <Td>{ingredient.averageCost / ingredient.purchaseSize}</Td>
               <Td>
-                <button>delete</button>
+                {/* <button
+                  type="button"
+                  className="bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded"
+                >
+                  {INGREDIENT_LIST_CONST.DELETE}
+                </button> */}
               </Td>
             </Tr>
           );
         })}
-        {!ingredientListState.length && <p>No Ingredients</p>}
       </Tbody>
     </Table>
   );
