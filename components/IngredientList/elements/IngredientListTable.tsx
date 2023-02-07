@@ -6,6 +6,7 @@ import Td from "@common/Table/elements/Td";
 import Tbody from "@common/Table/elements/Tbody";
 import useIngredientListContext from "../context/IngredientListContext";
 import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
+import { BUTTON } from "@localization/Buttons";
 
 export default function IngredientListTable() {
   const { ingredientListState, ingredientListDispatch } =
@@ -32,12 +33,12 @@ export default function IngredientListTable() {
               <Td>{ingredient.averageCost}</Td>
               <Td>{ingredient.averageCost / ingredient.purchaseSize}</Td>
               <Td>
-                {/* <button
+                <button
                   type="button"
                   className="bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded"
                 >
-                  {INGREDIENT_LIST_CONST.DELETE}
-                </button> */}
+                  {BUTTON.DELETE}
+                </button>
               </Td>
             </Tr>
           );

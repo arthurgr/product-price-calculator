@@ -2,6 +2,7 @@ import { Formik, Form } from "formik";
 import Input from "@common/Forms/Inputs/Input";
 import useIngredientListContext from "../context/IngredientListContext";
 import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
+import { VALIDATION } from "@localization/Validation";
 
 export default function AddIngredientForm() {
   const { ingredientListState, ingredientListDispatch } =
@@ -30,21 +31,21 @@ export default function AddIngredientForm() {
             (ingredient) => ingredient.ingredient === values.ingredient
           );
           if (!values.ingredient) {
-            errors.ingredient = "Required";
+            errors.ingredient = `${VALIDATION.REQUIRED}`;
           } else if (ingredientListState.length) {
-            errors.ingredient = "Duplicate Ingredient";
+            errors.ingredient = `${VALIDATION.DUPLICATE} ${INGREDIENT_LIST_CONST.INGREDIENT}`;
           }
 
           if (!values.measurementType) {
-            errors.measurementType = "Required";
+            errors.measurementType = `${VALIDATION.REQUIRED}`;
           }
 
           if (!values.purchaseSize) {
-            errors.purchaseSize = "Required";
+            errors.purchaseSize = `${VALIDATION.REQUIRED}`;
           }
 
           if (!values.averageCost) {
-            errors.averageCost = "Required";
+            errors.averageCost = `${VALIDATION.REQUIRED}`;
           }
           return errors;
         }}
