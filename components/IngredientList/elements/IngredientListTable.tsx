@@ -31,7 +31,7 @@ export default function IngredientListTable() {
               <Td>{ingredient.measurementType}</Td>
               <Td>{ingredient.purchaseSize}</Td>
               <Td>{ingredient.averageCost}</Td>
-              <Td>{ingredient.averageCost / ingredient.purchaseSize}</Td>
+              <Td>{ingredient.averageCost}</Td>
               <Td>
                 <button
                   type="button"

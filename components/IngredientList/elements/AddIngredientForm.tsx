@@ -16,8 +16,6 @@ export default function AddIngredientForm() {
     averageCost?: string;
   }
 
-  console.log(currencyFormatter.format(25.76666)); /* $2,500.00 */
-
   return (
     <>
       <Formik
@@ -35,7 +33,7 @@ export default function AddIngredientForm() {
           );
           if (!values.ingredient) {
             errors.ingredient = `${VALIDATION.REQUIRED}`;
-          } else if (ingredientListState.length) {
+          } else if (ingredientCheck.length) {
             errors.ingredient = `${VALIDATION.DUPLICATE} ${INGREDIENT_LIST_CONST.INGREDIENT}`;
           }
 
@@ -45,24 +43,36 @@ export default function AddIngredientForm() {
 
           if (!values.purchaseSize) {
             errors.purchaseSize = `${VALIDATION.REQUIRED}`;
+          } else if (!/^\d*\.?\d*$/.test(values.purchaseSize)) {
+            errors.purchaseSize = `${VALIDATION.EXPECTED_NUMBER}`;
           }
 
           if (!values.averageCost) {
             errors.averageCost = `${VALIDATION.REQUIRED}`;
+          } else if (!/^\d*\.?\d*$/.test(values.averageCost)) {
+            errors.averageCost = `${VALIDATION.EXPECTED_NUMBER}`;
           }
           return errors;
         }}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setSubmitting(false);
+          console.log(typeof values.purchaseSize);
+          console.log(parseInt(values.purchaseSize));
+          const costPerOunce =
+            parseInt(values.averageCost) / parseInt(values.purchaseSize);
+          console.log(costPerOunce);
           ingredientListDispatch({
             type: "ADD_INGREDIENT",
             ingredient: {
               ingredient: values.ingredient,
               measurementType: "oz",
-              purchaseSize: parseInt(values.purchaseSize),
-              averageCost: parseInt(values.averageCost),
-              costPerOunce:
-                parseInt(values.averageCost) / parseInt(values.purchaseSize),
+              purchaseSize: currencyFormatter.format(
+                parseInt(values.purchaseSize)
+              ),
+              averageCost: currencyFormatter.format(
+                parseInt(values.averageCost)
+              ),
+              costPerOunce: currencyFormatter.format(costPerOunce),
             },
           });
           resetForm();
