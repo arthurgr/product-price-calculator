@@ -1,6 +1,7 @@
 import { Formik, Form } from "formik";
 import Input from "@common/Forms/Inputs/Input";
 import useIngredientListContext from "../context/IngredientListContext";
+import { currencyFormatter } from "@utilities/currency/curencyFormatter";
 import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
 import { VALIDATION } from "@localization/Validation";
 
@@ -14,6 +15,8 @@ export default function AddIngredientForm() {
     purchaseSize?: string;
     averageCost?: string;
   }
+
+  console.log(currencyFormatter.format(25.76666)); /* $2,500.00 */
 
   return (
     <>

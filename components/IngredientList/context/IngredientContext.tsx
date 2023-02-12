@@ -11,11 +11,11 @@ export interface IngredientProps {
 const IngredientContext = createContext<IngredientProps>({
   ingredientState: {
     id: 0,
-    ingredient: "string",
+    ingredient: "",
     measurementType: "oz",
-    purchaseSize: 3,
-    averageCost: 3,
-    costPerOunce: 3,
+    purchaseSize: 0,
+    averageCost: 0,
+    costPerOunce: 0,
   },
   ingredientDispatch: () => {},
 });

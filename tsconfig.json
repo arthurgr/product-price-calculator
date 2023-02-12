@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@common/*": ["components/common/*"],
-      "@localization/*": ["localization/*"]
+      "@localization/*": ["localization/*"],
+      "@utilities/*": ["utilities/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
