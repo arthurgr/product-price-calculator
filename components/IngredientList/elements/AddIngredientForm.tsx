@@ -64,9 +64,7 @@ export default function AddIngredientForm() {
             ingredient: {
               ingredient: values.ingredient,
               measurementType: "oz",
-              purchaseSize: currencyFormatter.format(
-                parseInt(values.purchaseSize)
-              ),
+              purchaseSize: values.purchaseSize,
               averageCost: currencyFormatter.format(
                 parseInt(values.averageCost)
               ),
