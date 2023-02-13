@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { Ingredient } from "../interfaces/Ingredient";
 import ingredientReducer from "../reducers/ingredientReducer";
 import { IngredientActions } from "../interfaces/ingredientActions";
@@ -13,9 +13,9 @@ const IngredientContext = createContext<IngredientProps>({
     id: 0,
     ingredient: "",
     measurementType: "oz",
-    purchaseSize: 0,
-    averageCost: 0,
-    costPerOunce: 0,
+    purchaseSize: "0",
+    averageCost: "0",
+    costPerOunce: "0",
   },
   ingredientDispatch: () => {},
 });
@@ -25,13 +25,16 @@ export const IngredientProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [ingredientState, ingredientDispatch] = useReducer(ingredientReducer, {
+  const [ingredientState, ingredientDispatch] = useReducer<
+    // @TODO Remove any declarations
+    React.Reducer<any, any>
+  >(ingredientReducer, {
     id: 0,
     ingredient: "",
     measurementType: "oz",
-    purchaseSize: 0,
-    averageCost: 0,
-    costPerOunce: 0,
+    purchaseSize: "0",
+    averageCost: "0",
+    costPerOunce: "0",
   });
 
   return (
