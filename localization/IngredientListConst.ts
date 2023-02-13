@@ -6,4 +6,5 @@ export const INGREDIENT_LIST_CONST = {
   COST_PER_OUNCE: "Cost Per Ounce",
   ADD_INGREDIENT: "Add Ingredient",
   DELETE: "Delete",
+  OZ: "oz",
 };

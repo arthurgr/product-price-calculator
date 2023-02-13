@@ -22,7 +22,7 @@ export default function AddIngredientForm() {
       <Formik
         initialValues={{
           ingredient: "",
-          measurementType: "OZ",
+          measurementType: "oz",
           purchaseSize: "",
           averageCost: "",
         }}
@@ -63,7 +63,7 @@ export default function AddIngredientForm() {
             type: "ADD_INGREDIENT",
             ingredient: {
               ingredient: values.ingredient,
-              measurementType: "oz",
+              measurementType: INGREDIENT_LIST_CONST.OZ,
               purchaseSize: values.purchaseSize,
               averageCost: currencyFormatter.format(
                 parseInt(values.averageCost)

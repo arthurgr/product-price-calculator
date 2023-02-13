@@ -29,7 +29,9 @@ export default function IngredientListTable() {
             <Tr key={ingredient.ingredient}>
               <Td>{ingredient.ingredient}</Td>
               <Td>{ingredient.measurementType}</Td>
-              <Td>{ingredient.purchaseSize}</Td>
+              <Td>
+                {ingredient.purchaseSize} {INGREDIENT_LIST_CONST.OZ}
+              </Td>
               <Td>{ingredient.averageCost}</Td>
               <Td>{ingredient.averageCost}</Td>
               <Td>

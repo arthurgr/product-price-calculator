@@ -1,7 +1,7 @@
 export interface Ingredient {
   id?: number;
   ingredient: string;
-  measurementType: "oz";
+  measurementType: string;
   purchaseSize: string;
   averageCost: string;
   costPerOunce: string;
