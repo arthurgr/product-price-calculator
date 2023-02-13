@@ -89,6 +89,7 @@ export default function AddIngredientForm() {
                 <Input
                   label={INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}
                   name="measurementType"
+                  disabled
                 />
               </div>
               <div className="mb-4 mr-4">
@@ -108,7 +109,7 @@ export default function AddIngredientForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mb-4"
+              className="bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 rounded mb-4"
             >
               {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
             </button>

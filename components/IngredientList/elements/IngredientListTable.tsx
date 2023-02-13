@@ -35,7 +35,7 @@ export default function IngredientListTable() {
               <Td>
                 <button
                   type="button"
-                  className="bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded"
+                  className="bg-red-500 hover:bg-red-700 text-white p-1 rounded text-xs"
                 >
                   {BUTTON.DELETE}
                 </button>
