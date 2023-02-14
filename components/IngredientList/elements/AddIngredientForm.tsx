@@ -5,6 +5,7 @@ import { currencyFormatter } from "@utilities/currency/curencyFormatter";
 import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
 import { VALIDATION } from "@localization/Validation";
 import { validateCurrency } from "@utilities/regex";
+import Select from "@common/Forms/Inputs/Select";
 
 export default function AddIngredientForm() {
   const { ingredientListState, ingredientListDispatch } =
@@ -22,7 +23,7 @@ export default function AddIngredientForm() {
       <Formik
         initialValues={{
           ingredient: "",
-          measurementType: "oz",
+          measurementType: INGREDIENT_LIST_CONST.OZ,
           purchaseSize: "",
           averageCost: "",
         }}
@@ -84,15 +85,21 @@ export default function AddIngredientForm() {
                 />
               </div>
               <div className="mb-4 mr-4">
-                <Input
+                <Select
                   label={INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}
                   name="measurementType"
+                  options={[
+                    {
+                      value: INGREDIENT_LIST_CONST.OZ,
+                      label: INGREDIENT_LIST_CONST.OZ,
+                    },
+                  ]}
                   disabled
                 />
               </div>
               <div className="mb-4 mr-4">
                 <Input
-                  label={INGREDIENT_LIST_CONST.PURCHASE_SIZE}
+                  label={`${INGREDIENT_LIST_CONST.PURCHASE_SIZE} (${INGREDIENT_LIST_CONST.OZ})`}
                   name="purchaseSize"
                 />
               </div>
