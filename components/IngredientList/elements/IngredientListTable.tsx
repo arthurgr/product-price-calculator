@@ -33,7 +33,7 @@ export default function IngredientListTable() {
                 {ingredient.purchaseSize} {INGREDIENT_LIST_CONST.OZ}
               </Td>
               <Td>{ingredient.averageCost}</Td>
-              <Td>{ingredient.averageCost}</Td>
+              <Td>{ingredient.costPerOunce}</Td>
               <Td>
                 <button
                   type="button"
