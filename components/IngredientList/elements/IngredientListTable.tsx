@@ -9,8 +9,7 @@ import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
 import { BUTTON } from "@localization/Buttons";
 
 export default function IngredientListTable() {
-  const { ingredientListState, ingredientListDispatch } =
-    useIngredientListContext();
+  const { ingredientListState } = useIngredientListContext();
   return (
     <Table>
       <Thead>
