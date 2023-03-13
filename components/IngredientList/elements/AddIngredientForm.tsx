@@ -1,11 +1,11 @@
 import { Formik, Form } from "formik";
-import Input from "@common/Forms/Inputs/Input";
+import Input from "@/common/Forms/Inputs/Input";
 import useIngredientListContext from "../context/IngredientListContext";
-import { currencyFormatter } from "@utilities/currency/curencyFormatter";
-import { INGREDIENT_LIST_CONST } from "@localization/IngredientListConst";
-import { VALIDATION } from "@localization/Validation";
-import { validateCurrency } from "@utilities/regex";
-import Select from "@common/Forms/Inputs/Select";
+import { currencyFormatter } from "@/utilities/currency/curencyFormatter";
+import { INGREDIENT_LIST_CONST } from "@/localization/IngredientListConst";
+import { VALIDATION } from "@/localization/Validation";
+import { validateCurrency } from "@/utilities/regex";
+import Select from "@/common/Forms/Inputs/Select";
 
 export default function AddIngredientForm() {
   const { ingredientListState, ingredientListDispatch } =

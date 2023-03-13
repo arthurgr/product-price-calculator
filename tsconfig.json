@@ -16,9 +16,9 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@common/*": ["components/common/*"],
-      "@localization/*": ["localization/*"],
-      "@utilities/*": ["utilities/*"]
+      "@/common/*": ["components/common/*"],
+      "@/localization/*": ["localization/*"],
+      "@/utilities/*": ["utilities/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.setup.js"],
