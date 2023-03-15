@@ -5,7 +5,7 @@ import Tr from "@/common/Table/elements/Tr";
 import Td from "@/common/Table/elements/Td";
 import Tbody from "@/common/Table/elements/Tbody";
 import useIngredientListContext from "../context/IngredientListContext";
-import { INGREDIENT_LIST_CONST } from "@/localization/IngredientListConst";
+import { INGREDIENT_LIST_CONST } from "@/localization/Consts";
 import { BUTTON } from "@/localization/Buttons";
 
 export default function IngredientListTable() {
