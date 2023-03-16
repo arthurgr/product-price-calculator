@@ -15,6 +15,7 @@
     "component:headless": "cypress run --component"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.10.0",
     "@types/react-dom": "^18.0.10",
     "eslint": "^8.33.0",
     "eslint-config-next": "13.0.6",
