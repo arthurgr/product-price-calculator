@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/utilities/supabase";
+import { Auth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import IngredientList from "../components/IngredientList/IngredientList";
@@ -37,7 +39,7 @@ function Home({ data }: { data: Array<Ingredient> }) {
   // }, [session]);
 
   if (!session) {
-    return <p>Please login in</p>;
+    return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
   } else {
     return (
       <div className={styles.container}>
