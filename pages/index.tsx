@@ -39,7 +39,13 @@ function Home({ data }: { data: Array<Ingredient> }) {
   // }, [session]);
 
   if (!session) {
-    return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
+    return (
+      <Auth
+        supabaseClient={supabase}
+        appearance={{ theme: ThemeSupa }}
+        providers={["google"]}
+      />
+    );
   } else {
     return (
       <div className={styles.container}>
@@ -57,22 +63,22 @@ function Home({ data }: { data: Array<Ingredient> }) {
           </section>
         </main>
         <ul>
-          {data.map((element) => (
+          {/* {data.map((element) => (
             <li key={element.id}>{element.ingredient}</li>
-          ))}
+          ))} */}
         </ul>
       </div>
     );
   }
 }
 
-export async function getServerSideProps() {
-  let { data } = await supabase.from("ingredients").select();
-  return {
-    props: {
-      data,
-    },
-  };
-}
+// export async function getServerSideProps() {
+//   let { data } = await supabase.from("ingredients").select();
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }
 
 export default Home;
