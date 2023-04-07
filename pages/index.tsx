@@ -10,21 +10,25 @@ import { GENERAL } from "@/localization/Consts";
 import { Ingredient } from "components/IngredientList/interfaces/Ingredient";
 
 function Home({ data }: { data: Array<Ingredient> }) {
-  const [session, setSession] = useState<any>(null);
+  const [session, setSession] = useState<any>(true);
+
+  // useEffect(() => {
+  //   supabase.auth.getSession().then(({ data: { session } }) => {
+  //     setSession(session);
+  //   });
+
+  //   const {
+  //     data: { subscription },
+  //   } = supabase.auth.onAuthStateChange((_event, session) => {
+  //     setSession(session);
+  //   });
+
+  //   return () => subscription.unsubscribe();
+  // }, []);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
+    console.log(session);
+  }, [session]);
 
   // useEffect(() => {
   //   async function signInWithGoogle() {
@@ -40,11 +44,12 @@ function Home({ data }: { data: Array<Ingredient> }) {
 
   if (!session) {
     return (
-      <Auth
-        supabaseClient={supabase}
-        appearance={{ theme: ThemeSupa }}
-        providers={["google"]}
-      />
+      // <Auth
+      //   supabaseClient={supabase}
+      //   appearance={{ theme: ThemeSupa }}
+      //   providers={["google"]}
+      // />
+      <p>please login</p>
     );
   } else {
     return (
