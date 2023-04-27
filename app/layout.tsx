@@ -51,21 +51,21 @@ export default function RootLayout({
     };
   }, [supabase, router]);
 
-  if (!session) {
-    return (
-      <html>
-        <head />
-        <body>
-          <Auth
-            supabaseClient={supabase}
-            appearance={{ theme: ThemeSupa }}
-            providers={["google"]}
-          />
-          {/* {children} */}
-        </body>
-      </html>
-    );
-  }
+  // if (!session) {
+  //   return (
+  //     <html>
+  //       <head />
+  //       <body>
+  //         <Auth
+  //           supabaseClient={supabase}
+  //           appearance={{ theme: ThemeSupa }}
+  //           providers={["google"]}
+  //         />
+  //         {/* {children} */}
+  //       </body>
+  //     </html>
+  //   );
+  // }
   return (
     <html>
       <head />
