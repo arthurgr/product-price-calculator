@@ -18,32 +18,21 @@ export default function RootLayout({
   const [session, setSession] = useState<any>(null);
   const router = useRouter();
 
-  const signUp = () => {
-    supabase.auth.signUp({
-      email: "arevelski@gmail.com",
-      password: "arthurr99",
-    });
-  };
-  const signIn = () => {
-    supabase.auth.signInWithPassword({
-      email: "arevelski@gmail.com",
-      password: "arthurr99",
-    });
-  };
+  // const signUp = () => {
+  //   supabase.auth.signUp({
+  //     email: "",
+  //     password: "",
+  //   });
+  // };
+  // const signIn = () => {
+  //   supabase.auth.signInWithPassword({
+  //     email: "",
+  //     password: "",
+  //   });
+  // };
   const signOut = () => {
     supabase.auth.signOut();
   };
-
-  useEffect(() => {
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(() => {
-      router.refresh();
-    });
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, [supabase, router]);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -54,10 +43,13 @@ export default function RootLayout({
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
+      router.refresh();
     });
 
-    return () => subscription.unsubscribe();
-  }, []);
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [supabase, router]);
 
   if (!session) {
     return (
@@ -73,17 +65,16 @@ export default function RootLayout({
         </body>
       </html>
     );
-  } else {
-    return (
-      <html>
-        <head />
-        <body>
-          <button onClick={signUp}>Sign Up</button>
-          <button onClick={signIn}>Sign In</button>
-          <button onClick={signOut}>Sign Out</button>
-          {children}
-        </body>
-      </html>
-    );
   }
+  return (
+    <html>
+      <head />
+      <body>
+        {/* <button onClick={signUp}>Sign Up</button>
+        <button onClick={signIn}>Sign In</button> */}
+        <button onClick={signOut}>Sign Out</button>
+        {children}
+      </body>
+    </html>
+  );
 }
