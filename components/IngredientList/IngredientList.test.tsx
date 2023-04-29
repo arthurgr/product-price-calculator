@@ -7,8 +7,4 @@ describe("IngredientList.tsx", () => {
   it("Renders correctly", async () => {
     render(<IngredientList />);
   });
-  // it("Renders correctly", async () => {
-  //   render(<IngredientList />);
-  //   await userEvent.click(screen.getByText("Load Greeting"));
-  // });
 });
