@@ -8,6 +8,7 @@ import {
   // Import predefined theme
   ThemeSupa,
 } from "@supabase/auth-ui-shared";
+import "../styles/globals.css";
 
 export default function RootLayout({
   children,
@@ -18,18 +19,6 @@ export default function RootLayout({
   const [session, setSession] = useState<any>(null);
   const router = useRouter();
 
-  // const signUp = () => {
-  //   supabase.auth.signUp({
-  //     email: "",
-  //     password: "",
-  //   });
-  // };
-  // const signIn = () => {
-  //   supabase.auth.signInWithPassword({
-  //     email: "",
-  //     password: "",
-  //   });
-  // };
   const signOut = () => {
     supabase.auth.signOut();
   };
@@ -51,28 +40,34 @@ export default function RootLayout({
     };
   }, [supabase, router]);
 
-  // if (!session) {
-  //   return (
-  //     <html>
-  //       <head />
-  //       <body>
-  //         <Auth
-  //           supabaseClient={supabase}
-  //           appearance={{ theme: ThemeSupa }}
-  //           providers={["google"]}
-  //         />
-  //         {/* {children} */}
-  //       </body>
-  //     </html>
-  //   );
-  // }
+  if (!session) {
+    return (
+      <html>
+        <head />
+        <body>
+          <main className="flex justify-center">
+            <section className="w-96 mt-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
+              <Auth
+                supabaseClient={supabase}
+                appearance={{ theme: ThemeSupa }}
+                providers={["google"]}
+              />
+            </section>
+          </main>
+        </body>
+      </html>
+    );
+  }
   return (
     <html>
       <head />
       <body>
-        {/* <button onClick={signUp}>Sign Up</button>
-        <button onClick={signIn}>Sign In</button> */}
-        <button onClick={signOut}>Sign Out</button>
+        <button
+          onClick={signOut}
+          className="bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 rounded mb-4"
+        >
+          Sign Out
+        </button>
         {children}
       </body>
     </html>

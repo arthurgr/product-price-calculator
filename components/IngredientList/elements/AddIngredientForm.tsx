@@ -19,108 +19,104 @@ export default function AddIngredientForm() {
   }
 
   return (
-    <>
-      <Formik
-        initialValues={{
-          ingredient: "",
-          measurementType: INGREDIENT_LIST_CONST.OZ,
-          purchaseSize: "",
-          averageCost: "",
-        }}
-        validate={(values) => {
-          const errors: formItems = {};
+    <Formik
+      initialValues={{
+        ingredient: "",
+        measurementType: INGREDIENT_LIST_CONST.OZ,
+        purchaseSize: "",
+        averageCost: "",
+      }}
+      validate={(values) => {
+        const errors: formItems = {};
 
-          const ingredientCheck = ingredientListState.filter(
-            (ingredient) => ingredient.ingredient === values.ingredient
-          );
-          if (!values.ingredient) {
-            errors.ingredient = `${VALIDATION.REQUIRED}`;
-          } else if (ingredientCheck.length) {
-            errors.ingredient = `${VALIDATION.DUPLICATE} ${INGREDIENT_LIST_CONST.INGREDIENT}`;
-          }
+        const ingredientCheck = ingredientListState.filter(
+          (ingredient) => ingredient.ingredient === values.ingredient
+        );
+        if (!values.ingredient) {
+          errors.ingredient = `${VALIDATION.REQUIRED}`;
+        } else if (ingredientCheck.length) {
+          errors.ingredient = `${VALIDATION.DUPLICATE} ${INGREDIENT_LIST_CONST.INGREDIENT}`;
+        }
 
-          if (!values.measurementType) {
-            errors.measurementType = `${VALIDATION.REQUIRED}`;
-          }
+        if (!values.measurementType) {
+          errors.measurementType = `${VALIDATION.REQUIRED}`;
+        }
 
-          if (!values.purchaseSize) {
-            errors.purchaseSize = `${VALIDATION.REQUIRED}`;
-          } else if (!validateCurrency.test(values.purchaseSize)) {
-            errors.purchaseSize = `${VALIDATION.EXPECTED_NUMBER}`;
-          }
+        if (!values.purchaseSize) {
+          errors.purchaseSize = `${VALIDATION.REQUIRED}`;
+        } else if (!validateCurrency.test(values.purchaseSize)) {
+          errors.purchaseSize = `${VALIDATION.EXPECTED_NUMBER}`;
+        }
 
-          if (!values.averageCost) {
-            errors.averageCost = `${VALIDATION.REQUIRED}`;
-          } else if (!validateCurrency.test(values.averageCost)) {
-            errors.averageCost = `${VALIDATION.EXPECTED_NUMBER}`;
-          }
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
-          setSubmitting(false);
-          const costPerOunce =
-            parseInt(values.averageCost) / parseInt(values.purchaseSize);
-          ingredientListDispatch({
-            type: "ADD_INGREDIENT",
-            ingredient: {
-              ingredient: values.ingredient,
-              measurementType: INGREDIENT_LIST_CONST.OZ,
-              purchaseSize: values.purchaseSize,
-              averageCost: currencyFormatter.format(
-                parseInt(values.averageCost)
-              ),
-              costPerOunce: currencyFormatter.format(costPerOunce),
-            },
-          });
-          resetForm();
-        }}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <div className="flex flex-wrap">
-              <div className="mb-4 mr-4">
-                <Input
-                  label={INGREDIENT_LIST_CONST.INGREDIENT}
-                  name="ingredient"
-                />
-              </div>
-              <div className="mb-4 mr-4">
-                <Select
-                  label={INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}
-                  name="measurementType"
-                  options={[
-                    {
-                      value: INGREDIENT_LIST_CONST.OZ,
-                      label: INGREDIENT_LIST_CONST.OZ,
-                    },
-                  ]}
-                  disabled
-                />
-              </div>
-              <div className="mb-4 mr-4">
-                <Input
-                  label={`${INGREDIENT_LIST_CONST.PURCHASE_SIZE} (${INGREDIENT_LIST_CONST.OZ})`}
-                  name="purchaseSize"
-                />
-              </div>
-              <div className="mb-4 mr-4">
-                <Input
-                  label={INGREDIENT_LIST_CONST.AVERAGE_COST}
-                  name="averageCost"
-                />
-              </div>
+        if (!values.averageCost) {
+          errors.averageCost = `${VALIDATION.REQUIRED}`;
+        } else if (!validateCurrency.test(values.averageCost)) {
+          errors.averageCost = `${VALIDATION.EXPECTED_NUMBER}`;
+        }
+        return errors;
+      }}
+      onSubmit={(values, { setSubmitting, resetForm }) => {
+        setSubmitting(false);
+        const costPerOunce =
+          parseInt(values.averageCost) / parseInt(values.purchaseSize);
+        ingredientListDispatch({
+          type: "ADD_INGREDIENT",
+          ingredient: {
+            ingredient: values.ingredient,
+            measurementType: INGREDIENT_LIST_CONST.OZ,
+            purchaseSize: values.purchaseSize,
+            averageCost: currencyFormatter.format(parseInt(values.averageCost)),
+            costPerOunce: currencyFormatter.format(costPerOunce),
+          },
+        });
+        resetForm();
+      }}
+    >
+      {({ isSubmitting }) => (
+        <Form>
+          <div className="flex flex-wrap">
+            <div className="mb-4 mr-4">
+              <Input
+                label={INGREDIENT_LIST_CONST.INGREDIENT}
+                name="ingredient"
+              />
             </div>
+            <div className="mb-4 mr-4">
+              <Select
+                label={INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}
+                name="measurementType"
+                options={[
+                  {
+                    value: INGREDIENT_LIST_CONST.OZ,
+                    label: INGREDIENT_LIST_CONST.OZ,
+                  },
+                ]}
+                disabled
+              />
+            </div>
+            <div className="mb-4 mr-4">
+              <Input
+                label={`${INGREDIENT_LIST_CONST.PURCHASE_SIZE} (${INGREDIENT_LIST_CONST.OZ})`}
+                name="purchaseSize"
+              />
+            </div>
+            <div className="mb-4 mr-4">
+              <Input
+                label={INGREDIENT_LIST_CONST.AVERAGE_COST}
+                name="averageCost"
+              />
+            </div>
+          </div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 rounded mb-4"
-            >
-              {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
-            </button>
-          </Form>
-        )}
-      </Formik>
-    </>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 rounded mb-4"
+          >
+            {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 }

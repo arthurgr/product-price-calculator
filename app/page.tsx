@@ -1,4 +1,5 @@
 import { createServerComponentSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import IngredientList from "components/IngredientList/IngredientList";
 import { headers, cookies } from "next/headers";
 
 export default async function Ingredients() {
@@ -8,5 +9,10 @@ export default async function Ingredients() {
 
   const { data: ingredients } = await supabase.from("ingredients").select();
 
-  return <pre>{JSON.stringify(ingredients, null, 2)}</pre>;
+  return (
+    <>
+      <IngredientList />
+      <pre>{JSON.stringify(ingredients, null, 2)}</pre>
+    </>
+  );
 }
