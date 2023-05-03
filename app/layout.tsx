@@ -9,6 +9,9 @@ import {
   ThemeSupa,
 } from "@supabase/auth-ui-shared";
 import "../styles/globals.css";
+import Head from "./head";
+import ContentLayout from "@/common/Layout/ContentLayout";
+import LoginLayout from "@/common/Layout/LoginLayout";
 
 export default function RootLayout({
   children,
@@ -43,7 +46,7 @@ export default function RootLayout({
   if (!session) {
     return (
       <html>
-        <head />
+        <Head />
         <body>
           <main className="flex justify-center">
             <section className="w-96 mt-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
@@ -60,15 +63,9 @@ export default function RootLayout({
   }
   return (
     <html>
-      <head />
+      <Head />
       <body>
-        <button
-          onClick={signOut}
-          className="bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 rounded mb-4"
-        >
-          Sign Out
-        </button>
-        {children}
+        <ContentLayout>{children}</ContentLayout>
       </body>
     </html>
   );
