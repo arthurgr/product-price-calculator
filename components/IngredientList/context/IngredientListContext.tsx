@@ -1,31 +1,42 @@
-import React, { createContext, useContext, useReducer } from "react";
+"use client";
+
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import ingredientListReducer from "../reducers/ingredientListReducer";
 import { Ingredient } from "../interfaces/Ingredient";
 import { IngredientListActions } from "../interfaces/IngredientListActions";
 
 export interface IngredientListProps {
-  ingredientListState: Ingredient[];
+  ingredientList: Ingredient[];
   ingredientListDispatch: React.Dispatch<IngredientListActions>;
 }
 
 const IngredientListContext = createContext<IngredientListProps>({
-  ingredientListState: [],
+  ingredientList: [],
   ingredientListDispatch: () => {},
 });
 
 export const IngredientListProvider = ({
+  ingredients,
   children,
 }: {
+  ingredients: Array<Ingredient>;
   children: React.ReactNode;
 }) => {
-  const [ingredientListState, ingredientListDispatch] = useReducer(
+  const [ingredientList, ingredientListDispatch] = useReducer(
     ingredientListReducer,
     []
   );
 
+  useEffect(() => {
+    ingredientListDispatch({
+      type: "UPDATE_INGREDIENT_LIST",
+      ingredientList: [...ingredients],
+    });
+  }, [ingredients]);
+
   return (
     <IngredientListContext.Provider
-      value={{ ingredientListState, ingredientListDispatch }}
+      value={{ ingredientList, ingredientListDispatch }}
     >
       {children}
     </IngredientListContext.Provider>

@@ -6,11 +6,5 @@ export default async function Ingredients() {
   const supabase = createServerComponentSupabaseClient({ headers, cookies });
 
   const { data: ingredients } = await supabase.from("ingredients").select();
-
-  return (
-    <>
-      <IngredientList />
-      <pre>{JSON.stringify(ingredients, null, 2)}</pre>
-    </>
-  );
+  return <IngredientList ingredients={ingredients ? ingredients : []} />;
 }

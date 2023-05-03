@@ -8,6 +8,8 @@ export default function ingredientListReducer(
   switch (action.type) {
     case "ADD_INGREDIENT":
       return [...state, { ...action.ingredient }];
+    case "UPDATE_INGREDIENT_LIST":
+      return [...action.ingredientList];
     default:
       throw new Error();
   }

@@ -9,7 +9,8 @@ import { INGREDIENT_LIST_CONST } from "@/localization/Consts";
 import { BUTTON } from "@/localization/Buttons";
 
 export default function IngredientListTable() {
-  const { ingredientListState } = useIngredientListContext();
+  const { ingredientList } = useIngredientListContext();
+
   return (
     <Table>
       <Thead>
@@ -23,7 +24,7 @@ export default function IngredientListTable() {
         </Tr>
       </Thead>
       <Tbody>
-        {ingredientListState.map((ingredient) => {
+        {ingredientList.map((ingredient) => {
           return (
             <Tr key={ingredient.ingredient}>
               <Td>{ingredient.ingredient}</Td>
@@ -36,7 +37,8 @@ export default function IngredientListTable() {
               <Td>
                 <button
                   type="button"
-                  className="bg-red-500 hover:bg-red-700 text-white p-1 rounded text-xs"
+                  className="text-white bg-red-300 focus:outline-none p-1 rounded text-xs"
+                  disabled
                 >
                   {BUTTON.DELETE}
                 </button>
