@@ -8,8 +8,7 @@ import { validateCurrency } from "@/utilities/regex";
 import Select from "@/common/Forms/Inputs/Select";
 
 export default function AddIngredientForm() {
-  const { ingredientListState, ingredientListDispatch } =
-    useIngredientListContext();
+  const { ingredientList, ingredientListDispatch } = useIngredientListContext();
 
   interface formItems {
     ingredient?: string;
@@ -29,7 +28,7 @@ export default function AddIngredientForm() {
       validate={(values) => {
         const errors: formItems = {};
 
-        const ingredientCheck = ingredientListState.filter(
+        const ingredientCheck = ingredientList.filter(
           (ingredient) => ingredient.ingredient === values.ingredient
         );
         if (!values.ingredient) {
