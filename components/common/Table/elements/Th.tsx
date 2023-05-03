@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Th({ children }: { children: React.ReactNode }) {
-  return <th>{children}</th>;
+  return <th className="px-6 py-3">{children}</th>;
 }
