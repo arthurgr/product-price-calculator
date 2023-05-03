@@ -72,15 +72,13 @@ export default function AddIngredientForm() {
       }}
     >
       {({ isSubmitting }) => (
-        <Form>
-          <div className="flex flex-wrap">
-            <div className="mb-4 mr-4">
+        <div className="relative overflow-x-auto shadow-sm sm:rounded-lg p-5 bg-white">
+          <Form>
+            <section className="grid grid-cols-5 gap-4">
               <Input
                 label={INGREDIENT_LIST_CONST.INGREDIENT}
                 name="ingredient"
               />
-            </div>
-            <div className="mb-4 mr-4">
               <Select
                 label={INGREDIENT_LIST_CONST.MEASUREMENT_TYPE}
                 name="measurementType"
@@ -92,29 +90,29 @@ export default function AddIngredientForm() {
                 ]}
                 disabled
               />
-            </div>
-            <div className="mb-4 mr-4">
               <Input
                 label={`${INGREDIENT_LIST_CONST.PURCHASE_SIZE} (${INGREDIENT_LIST_CONST.OZ})`}
                 name="purchaseSize"
               />
-            </div>
-            <div className="mb-4 mr-4">
               <Input
                 label={INGREDIENT_LIST_CONST.AVERAGE_COST}
                 name="averageCost"
               />
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 rounded mb-4"
-          >
-            {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
-          </button>
-        </Form>
+              <div>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
+                </label>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 rounded mb-4"
+                >
+                  {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
+                </button>
+              </div>
+            </section>
+          </Form>
+        </div>
       )}
     </Formik>
   );
