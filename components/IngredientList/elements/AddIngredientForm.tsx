@@ -74,7 +74,7 @@ export default function AddIngredientForm() {
       {({ isSubmitting }) => (
         <div className="relative overflow-x-auto shadow-sm sm:rounded-lg p-5 bg-white">
           <Form>
-            <section className="grid grid-cols-5 gap-4">
+            <section className="grid md:grid-cols-5 gap-4 sm:grid-cols-1">
               <Input
                 label={INGREDIENT_LIST_CONST.INGREDIENT}
                 name="ingredient"
