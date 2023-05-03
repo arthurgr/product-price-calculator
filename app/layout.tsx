@@ -11,7 +11,6 @@ import {
 import "../styles/globals.css";
 import Head from "./head";
 import ContentLayout from "@/common/Layout/ContentLayout";
-import LoginLayout from "@/common/Layout/LoginLayout";
 
 export default function RootLayout({
   children,
