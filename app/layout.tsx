@@ -22,9 +22,9 @@ export default function RootLayout({
   const [session, setSession] = useState<any>(null);
   const router = useRouter();
 
-  const signOut = () => {
-    supabase.auth.signOut();
-  };
+  // const signOut = () => {
+  //   supabase.auth.signOut();
+  // };
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {

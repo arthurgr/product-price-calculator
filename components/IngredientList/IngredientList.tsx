@@ -14,13 +14,18 @@ export default function IngredientListElements({
   return (
     <section>
       <IngredientListProvider ingredients={ingredients}>
-        <h2 className="mb-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {INGREDIENT_LIST_CONST.ADD_INGREDIENT} :
-        </h2>
-        <AddIngredientForm />
-        <h2 className="mb-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {INGREDIENT_LIST_CONST.INGREDIENT_LIST} :
-        </h2>
+        <div className="mb-6">
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {INGREDIENT_LIST_CONST.ADD_INGREDIENT} :
+          </h2>
+          <AddIngredientForm />
+        </div>
+
+        <div className="mb-6">
+          <h2 className="mb-3 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {INGREDIENT_LIST_CONST.INGREDIENT_LIST} :
+          </h2>
+        </div>
         <IngredientListTable />
       </IngredientListProvider>
     </section>
