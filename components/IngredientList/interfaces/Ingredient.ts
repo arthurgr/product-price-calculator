@@ -4,5 +4,5 @@ export interface Ingredient {
   measurementType: string;
   purchaseSize: string;
   averageCost: string;
-  costPerOunce: string;
+  costPerOunce: number;
 }

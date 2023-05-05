@@ -15,9 +15,6 @@ export default function IngredientListElements({
     <section>
       <IngredientListProvider ingredients={ingredients}>
         <div className="mb-6">
-          <h2 className="mb-3 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-            {INGREDIENT_LIST_CONST.ADD_INGREDIENT} :
-          </h2>
           <AddIngredientForm />
         </div>
 

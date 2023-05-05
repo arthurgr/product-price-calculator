@@ -37,9 +37,7 @@ export default function IngredientListTable() {
               <Td>
                 {currencyFormatter.format(parseInt(ingredient.averageCost))}
               </Td>
-              <Td>
-                {currencyFormatter.format(parseInt(ingredient.costPerOunce))}
-              </Td>
+              <Td>{currencyFormatter.format(ingredient.costPerOunce)}</Td>
               <Td>
                 <button
                   type="button"
