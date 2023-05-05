@@ -1,4 +1,5 @@
 import { Field, ErrorMessage } from "formik";
+import Label from "./Label";
 
 export default function Select({
   label,
@@ -20,12 +21,7 @@ export default function Select({
 
   return (
     <section>
-      <label
-        htmlFor={name}
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >
-        {label}
-      </label>
+      <Label htmlFor={name}>{label}</Label>
       <Field
         as="select"
         name={name}

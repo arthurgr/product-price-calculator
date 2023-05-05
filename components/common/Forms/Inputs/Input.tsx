@@ -1,4 +1,5 @@
 import { Field, ErrorMessage } from "formik";
+import Label from "./Label";
 
 export default function Input({
   label,
@@ -13,12 +14,7 @@ export default function Input({
 }) {
   return (
     <section>
-      <label
-        htmlFor={name}
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >
-        {label}
-      </label>
+      <Label htmlFor={name}>{label}</Label>
       <Field
         type={type ? type : "text"}
         name={name}

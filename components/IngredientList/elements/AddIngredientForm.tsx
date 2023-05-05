@@ -1,7 +1,7 @@
 import { Formik, Form } from "formik";
 import Input from "@/common/Forms/Inputs/Input";
+import Label from "@/common/Forms/Inputs/Label";
 import useIngredientListContext from "../context/IngredientListContext";
-import { currencyFormatter } from "@/utilities/currency/curencyFormatter";
 import { INGREDIENT_LIST_CONST } from "@/localization/Consts";
 import { VALIDATION } from "@/localization/Validation";
 import { validateCurrency } from "@/utilities/regex";
@@ -16,6 +16,8 @@ export default function AddIngredientForm() {
     purchaseSize?: string;
     averageCost?: string;
   }
+
+  // const supabase = createComponentSupabaseClient({ headers, cookies });
 
   return (
     <Formik
@@ -54,20 +56,34 @@ export default function AddIngredientForm() {
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting, resetForm }) => {
+      onSubmit={async (values, { setSubmitting, resetForm }) => {
         setSubmitting(false);
-        const costPerOunce =
-          parseInt(values.averageCost) / parseInt(values.purchaseSize);
-        ingredientListDispatch({
-          type: "ADD_INGREDIENT",
-          ingredient: {
-            ingredient: values.ingredient,
-            measurementType: INGREDIENT_LIST_CONST.OZ,
-            purchaseSize: values.purchaseSize,
-            averageCost: currencyFormatter.format(parseInt(values.averageCost)),
-            costPerOunce: currencyFormatter.format(costPerOunce),
-          },
-        });
+        console.log(values);
+
+        // const { data, error } = await supabase.from("ingredients").insert([
+        //   {
+        //     ingredient: values.ingredient,
+        //     measurementType: INGREDIENT_LIST_CONST.OZ,
+        //     purchaseSize: values.purchaseSize,
+        //   },
+        // ]);
+
+        // if (!error) {
+        //   console.log(data);
+        // }
+
+        // const costPerOunce =
+        //   parseInt(values.averageCost) / parseInt(values.purchaseSize);
+        // ingredientListDispatch({
+        //   type: "ADD_INGREDIENT",
+        //   ingredient: {
+        //     ingredient: values.ingredient,
+        //     measurementType: INGREDIENT_LIST_CONST.OZ,
+        //     purchaseSize: values.purchaseSize,
+        //     averageCost: currencyFormatter.format(parseInt(values.averageCost)),
+        //     costPerOunce: currencyFormatter.format(costPerOunce),
+        //   },
+        // });
         resetForm();
       }}
     >
@@ -99,13 +115,14 @@ export default function AddIngredientForm() {
                 name="averageCost"
               />
               <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <Label htmlFor="submit">
                   {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
-                </label>
+                </Label>
                 <button
                   type="submit"
+                  name="ssubmit"
                   disabled={isSubmitting}
-                  className="bg-blue-500 hover:bg-blue-700 text-sm text-white py-2 px-4 rounded mb-4"
+                  className="bg-blue-500 hover:bg-blue-700 w-full text-sm text-white py-2 px-4 rounded mb-4"
                 >
                   {INGREDIENT_LIST_CONST.ADD_INGREDIENT}
                 </button>
