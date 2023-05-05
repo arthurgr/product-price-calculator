@@ -15,7 +15,7 @@ const IngredientContext = createContext<IngredientProps>({
     measurementType: "oz",
     purchaseSize: "0",
     averageCost: "0",
-    costPerOunce: "0",
+    costPerOunce: 0,
   },
   ingredientDispatch: () => {},
 });
