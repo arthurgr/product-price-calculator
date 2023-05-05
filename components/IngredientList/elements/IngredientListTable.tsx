@@ -6,6 +6,7 @@ import Td from "@/common/Table/elements/Td";
 import Tbody from "@/common/Table/elements/Tbody";
 import useIngredientListContext from "../context/IngredientListContext";
 import { INGREDIENT_LIST_CONST } from "@/localization/Consts";
+import { currencyFormatter } from "@/utilities/currency/curencyFormatter";
 import { BUTTON } from "@/localization/Buttons";
 
 export default function IngredientListTable() {
@@ -33,8 +34,12 @@ export default function IngredientListTable() {
               <Td>
                 {ingredient.purchaseSize} {INGREDIENT_LIST_CONST.OZ}
               </Td>
-              <Td>{ingredient.averageCost}</Td>
-              <Td>{ingredient.costPerOunce}</Td>
+              <Td>
+                {currencyFormatter.format(parseInt(ingredient.averageCost))}
+              </Td>
+              <Td>
+                {currencyFormatter.format(parseInt(ingredient.costPerOunce))}
+              </Td>
               <Td>
                 <button
                   type="button"

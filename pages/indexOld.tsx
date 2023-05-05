@@ -1,15 +1,7 @@
-import { useState, useEffect } from "react";
-// import { supabase } from "@/utilities/supabase";
-// import { Auth } from "@supabase/auth-ui-react";
-// import { ThemeSupa } from "@supabase/auth-ui-shared";
 import Head from "next/head";
-import { headers, cookies } from "next/headers";
 import styles from "../styles/Home.module.css";
-// import IngredientList from "../components/IngredientList/IngredientList";
-// import RecipeList from "components/RecipeList/RecipeList";
 import { GENERAL } from "@/localization/Consts";
 import { Ingredient } from "components/IngredientList/interfaces/Ingredient";
-import { createServerComponentSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 function Home({ ingredients }: { ingredients: Array<Ingredient> }) {
   return (
@@ -23,8 +15,6 @@ function Home({ ingredients }: { ingredients: Array<Ingredient> }) {
       <main>
         <h1 className="mb-6 text-lg">{GENERAL.PRODUCT_PRICE_CALCULATOR}</h1>
         <section>
-          {/* <IngredientList />
-          <RecipeList /> */}
           <pre>{JSON.stringify(ingredients, null, 2)}</pre>
         </section>
       </main>
@@ -33,9 +23,6 @@ function Home({ ingredients }: { ingredients: Array<Ingredient> }) {
 }
 
 export async function getServerSideProps() {
-  // const supabase = createServerComponentSupabaseClient({ headers, cookies });
-  // let { data: ingredients } = await supabase.from("ingredients").select();
-  // console.log(ingredients);
   return {
     props: {
       ingredients: [],

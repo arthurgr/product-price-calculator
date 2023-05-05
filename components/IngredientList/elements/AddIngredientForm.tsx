@@ -5,8 +5,8 @@ import useIngredientListContext from "../context/IngredientListContext";
 import { INGREDIENT_LIST_CONST } from "@/localization/Consts";
 import { VALIDATION } from "@/localization/Validation";
 import { validateCurrency } from "@/utilities/regex";
-import { currencyFormatter } from "@/utilities/currency/curencyFormatter";
 import Select from "@/common/Forms/Inputs/Select";
+import { supabase } from "@/utilities/supabase";
 
 export default function AddIngredientForm() {
   const { ingredientList, ingredientListDispatch } = useIngredientListContext();
@@ -17,8 +17,6 @@ export default function AddIngredientForm() {
     purchaseSize?: string;
     averageCost?: string;
   }
-
-  // const supabase = createComponentSupabaseClient({ headers, cookies });
 
   return (
     <Formik
@@ -70,32 +68,15 @@ export default function AddIngredientForm() {
           averageCost: values.averageCost,
           costPerOunce: costPerOunce,
         };
-        console.log(ingredient);
 
-        // const { data, error } = await supabase.from("ingredients").insert([
-        //   {
-        //     ingredient: values.ingredient,
-        //     measurementType: INGREDIENT_LIST_CONST.OZ,
-        //     purchaseSize: values.purchaseSize,
-        //   },
-        // ]);
+        const { data, error } = await supabase
+          .from("ingredients")
+          .insert([ingredient]);
 
-        // if (!error) {
-        //   console.log(data);
-        // }
+        if (error) {
+          console.log(data);
+        }
 
-        // const costPerOunce =
-        //   parseInt(values.averageCost) / parseInt(values.purchaseSize);
-        // ingredientListDispatch({
-        //   type: "ADD_INGREDIENT",
-        //   ingredient: {
-        // ingredient: values.ingredient,
-        // measurementType: INGREDIENT_LIST_CONST.OZ,
-        // purchaseSize: values.purchaseSize,
-        // averageCost: currencyFormatter.format(parseInt(values.averageCost)),
-        // costPerOunce: currencyFormatter.format(costPerOunce),
-        //   },
-        // });
         resetForm();
       }}
     >
