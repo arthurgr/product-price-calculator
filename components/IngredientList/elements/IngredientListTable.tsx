@@ -20,7 +20,8 @@ export default function IngredientListTable() {
           <Th>{INGREDIENT_LIST_CONST.PURCHASE_SIZE}</Th>
           <Th>{INGREDIENT_LIST_CONST.AVERAGE_COST}</Th>
           <Th>{INGREDIENT_LIST_CONST.COST_PER_OUNCE}</Th>
-          <Th>{INGREDIENT_LIST_CONST.DELETE}</Th>
+          <Th>{BUTTON.UPDATE}</Th>
+          <Th>{BUTTON.DELETE}</Th>
         </Tr>
       </Thead>
       <Tbody>
@@ -34,6 +35,15 @@ export default function IngredientListTable() {
               </Td>
               <Td>{ingredient.averageCost}</Td>
               <Td>{ingredient.costPerOunce}</Td>
+              <Td>
+                <button
+                  type="button"
+                  className="text-white bg-blue-300 focus:outline-none p-1 rounded text-xs"
+                  disabled
+                >
+                  {BUTTON.UPDATE}
+                </button>
+              </Td>
               <Td>
                 <button
                   type="button"

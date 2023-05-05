@@ -5,6 +5,7 @@ import useIngredientListContext from "../context/IngredientListContext";
 import { INGREDIENT_LIST_CONST } from "@/localization/Consts";
 import { VALIDATION } from "@/localization/Validation";
 import { validateCurrency } from "@/utilities/regex";
+import { currencyFormatter } from "@/utilities/currency/curencyFormatter";
 import Select from "@/common/Forms/Inputs/Select";
 
 export default function AddIngredientForm() {
@@ -58,7 +59,18 @@ export default function AddIngredientForm() {
       }}
       onSubmit={async (values, { setSubmitting, resetForm }) => {
         setSubmitting(false);
-        console.log(values);
+
+        const costPerOunce =
+          parseInt(values.averageCost) / parseInt(values.purchaseSize);
+
+        const ingredient = {
+          ingredient: values.ingredient,
+          measurementType: INGREDIENT_LIST_CONST.OZ,
+          purchaseSize: values.purchaseSize,
+          averageCost: values.averageCost,
+          costPerOunce: costPerOunce,
+        };
+        console.log(ingredient);
 
         // const { data, error } = await supabase.from("ingredients").insert([
         //   {
@@ -77,11 +89,11 @@ export default function AddIngredientForm() {
         // ingredientListDispatch({
         //   type: "ADD_INGREDIENT",
         //   ingredient: {
-        //     ingredient: values.ingredient,
-        //     measurementType: INGREDIENT_LIST_CONST.OZ,
-        //     purchaseSize: values.purchaseSize,
-        //     averageCost: currencyFormatter.format(parseInt(values.averageCost)),
-        //     costPerOunce: currencyFormatter.format(costPerOunce),
+        // ingredient: values.ingredient,
+        // measurementType: INGREDIENT_LIST_CONST.OZ,
+        // purchaseSize: values.purchaseSize,
+        // averageCost: currencyFormatter.format(parseInt(values.averageCost)),
+        // costPerOunce: currencyFormatter.format(costPerOunce),
         //   },
         // });
         resetForm();
