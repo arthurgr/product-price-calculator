@@ -95,10 +95,11 @@ export default function AddIngredientForm() {
         <div className="relative overflow-x-auto shadow-sm sm:rounded-lg p-5 bg-white">
           <div className="flex">
             <BsFillPlusCircleFill className="text-green-500 mt-1 mr-2" />
-            <h2 className="mb-3 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+            <h2 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
               {INGREDIENT_LIST_CONST.ADD_INGREDIENTS}
             </h2>
           </div>
+          <hr className="mb-5" />
           <Form>
             <section className="grid md:grid-cols-5 gap-4 sm:grid-cols-1">
               <Input
