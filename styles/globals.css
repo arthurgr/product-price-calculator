@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  background-color: #efefef;
+body {
+  background-color: #eaeaea;
+}
+
+body.dark {
+  background-color: #292c35;
+}
+
+/* Dark mode btn */
+input:checked ~ .dot {
+  transform: translateX(100%);
 }
