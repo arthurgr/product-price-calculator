@@ -8,6 +8,7 @@ import useIngredientListContext from "../context/IngredientListContext";
 import { INGREDIENT_LIST_CONST } from "@/localization/Consts";
 import { currencyFormatter } from "@/utilities/currency/curencyFormatter";
 import { BUTTON } from "@/localization/Buttons";
+import { BsFillExclamationDiamondFill } from "react-icons/bs";
 
 export default function IngredientListTable() {
   const { ingredientList } = useIngredientListContext();
@@ -59,6 +60,16 @@ export default function IngredientListTable() {
             </Tr>
           );
         })}
+        {!ingredientList.length && (
+          <Tr>
+            <td colSpan={7} className="">
+              <div className="flex justify-center align-middle p-5">
+                <BsFillExclamationDiamondFill className="text-lg text-yellow-500 mr-1" />
+                {INGREDIENT_LIST_CONST.PLEASE_ADD_INGREDIENTS}
+              </div>
+            </td>
+          </Tr>
+        )}
       </Tbody>
     </Table>
   );

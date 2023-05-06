@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Thead({ children }: { children: React.ReactNode }) {
   return (
-    <thead className="text-sm font-semibold text-gray-900 dark:text-white">
+    <thead className="text-sm font-normal text-gray-800 dark:text-white">
       {children}
     </thead>
   );
