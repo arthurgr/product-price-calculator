@@ -34,7 +34,8 @@ export default function RootLayout({
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-      router.refresh();
+      // @TODO is this needed? looks like its used on auth state change
+      // router.refresh();
     });
 
     return () => {
