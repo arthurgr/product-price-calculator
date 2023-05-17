@@ -16,12 +16,12 @@ export default function ContentLayout({
   };
   return (
     <body className={theme}>
-      <main className="flex justify-center">
-        <div className="max-w-4xl">
+      <main className="sm:max-w-full md:max-w-5xl mx-auto px-2">
+        <div className="flex items-center">
           <ThemeToggle config={{ theme, setTheme }} />
           <PrimaryNavigation />
-          {children}
         </div>
+        {children}
       </main>
     </body>
   );

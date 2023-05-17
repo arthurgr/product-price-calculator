@@ -48,8 +48,8 @@ export default function RootLayout({
       <html>
         <Head />
         <body>
-          <main className="flex justify-center">
-            <section className="w-96 mt-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
+          <main>
+            <section className="mt-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
               <Auth
                 supabaseClient={supabase}
                 appearance={{ theme: ThemeSupa }}

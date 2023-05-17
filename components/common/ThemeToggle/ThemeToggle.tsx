@@ -6,8 +6,8 @@ export default function ThemeToggle(props: {
 }) {
   const { theme, setTheme } = props.config;
   return (
-    <div className="form-check form-switch float-right m-2">
-      <label htmlFor="toggleB" className="flex items-center cursor-pointer">
+    <div className="form-check form-switch m-2">
+      <label htmlFor="toggleB" className="cursor-pointer">
         <div className="relative">
           <input
             type="checkbox"

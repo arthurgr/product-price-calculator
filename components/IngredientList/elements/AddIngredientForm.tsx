@@ -92,7 +92,7 @@ export default function AddIngredientForm() {
       }}
     >
       {({ isSubmitting }) => (
-        <div className="relative overflow-x-auto shadow-sm sm:rounded-lg p-5 bg-white dark:bg-gray-800">
+        <div className="shadow-sm sm:rounded-lg p-5 bg-white dark:bg-gray-800">
           <div className="flex">
             <BsFillPlusCircleFill className="text-green-500 mt-1 mr-2" />
             <h2 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">

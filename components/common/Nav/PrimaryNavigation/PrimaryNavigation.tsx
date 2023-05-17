@@ -8,7 +8,7 @@ export default function PrimaryNavigation() {
     supabase.auth.signOut();
   };
   return (
-    <nav className="my-3 flex justify-end">
+    <nav>
       <ul>
         <li>
           <button
