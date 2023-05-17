@@ -14,7 +14,6 @@ export default function ThemeToggle(props: {
             id="toggleB"
             className="sr-only"
             onChange={() => {
-              console.log("this ran");
               if (theme === "dark") {
                 setTheme("light");
               } else {
