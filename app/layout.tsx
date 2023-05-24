@@ -48,7 +48,7 @@ export default function RootLayout({
       <html>
         <Head />
         <body>
-          <main>
+          <main className="sm:max-w-full md:max-w-lg mx-auto px-2">
             <section className="mt-6 p-6 bg-white border border-gray-200 rounded-lg shadow">
               <Auth
                 supabaseClient={supabase}
